@@ -29,7 +29,8 @@ class MagasinCrudController extends CrudController
         $data = $request->validated();
         $disk = "uploads";
         $destination_path = "uploads/shop";
-        $path = '/SandFishBack/public/uploads/shop/';
+        //$path = '/IDevelopBack/public/uploads/shop/';
+        $path = '/uploads/shop/';
         if (request()->hasFile('logo')) {
             $imageName = Str::random(15) . '.' . $request->logo->getClientOriginalExtension();
             $request->file('logo')->storeAs($destination_path, $imageName, $disk);

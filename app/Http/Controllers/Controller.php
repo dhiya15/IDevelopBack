@@ -16,33 +16,33 @@ class Controller extends BaseController
     public function init()
     {
         $shop = Magasin::find(1);
-        $faq_header = $this->getSection("faq_header");
-        $faq_content = $this->getSection("faq_content");
-        $department_header = $this->getSection("department_header");
-        $department_content = $this->getSection("department_content");
+
         $services_header = $this->getSection("services_header");
         $services_content = $this->getSection("services_content");
-        $how_it_work_header = $this->getSection("how_it_work_header");
-        $how_it_work_content = $this->getSection("how_it_work_content");
+
+        $solutions_header = $this->getSection("solutions_header");
+        $solutions_content = $this->getSection("solutions_content");
+
         $gallery_header = $this->getSection("gallery_header");
         $gallery_content = $this->getSection("gallery_content");
-        $why_us_header = $this->getSection("why_us_header");
-        $why_us_content = $this->getSection("why_us_content");
+
+        $faq_header = $this->getSection("faq_header");
+        $faq_content = $this->getSection("faq_content");
 
         return response()->json([
             "magasin" => $shop,
-            "faq_header" => $faq_header,
-            "faq_content" => $faq_content,
-            "department_header" => $department_header,
-            "department_content" => $department_content,
+
             "services_header" => $services_header,
             "services_content" => $services_content,
-            "how_it_work_header" => $how_it_work_header,
-            "how_it_work_content" => $how_it_work_content,
+
+            "solutions_header" => $solutions_header,
+            "solutions_content" => $solutions_content,
+
             "gallery_header" => $gallery_header,
             "gallery_content" => $gallery_content,
-            "why_us_header" => $why_us_header,
-            "why_us_content" => $why_us_content
+
+            "faq_header" => $faq_header,
+            "faq_content" => $faq_content
         ]);
     }
 

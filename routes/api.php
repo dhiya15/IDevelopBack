@@ -25,8 +25,6 @@ Route::middleware(['cors'])->group(function () {
     Route::get('/publications',[\App\Http\Controllers\PublicationController::class,'publications']);
     Route::get('/init',[\App\Http\Controllers\Controller::class,'init']);
     Route::get('/publication/{id}',[\App\Http\Controllers\Controller::class,'publication']);
-    Route::post('/new-registration', [RegistrationCrudController::class, 'addRegistration']);
-    Route::post('/check-category', [RegistrationCrudController::class, 'checkCategory']);
 });
 
 
