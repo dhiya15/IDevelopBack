@@ -6,5 +6,3 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('publication') }}'><i class='nav-icon la la-ad'></i> Publications</a></li>
 
 <!--<li class='nav-item'><a class='nav-link' href='{{ backpack_url('user') }}'><i class='nav-icon la la-question'></i> Users</a></li>-->
-
-<li class="nav-item"><a class="nav-link" href="{{ backpack_url('registration') }}"><i class="nav-icon la la-address-book"></i> Registrations</a></li>

@@ -40,10 +40,10 @@ class PublicationCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('section_id');
-        CRUD::column('icon');
-        CRUD::column('image');
+        //CRUD::column('icon');
+        //CRUD::column('image');
         CRUD::column('title');
-        CRUD::column('description');
+        //CRUD::column('description');
 //        CRUD::column('content');
 
         /**
