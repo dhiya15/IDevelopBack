@@ -25,7 +25,7 @@ class MagasinRequest extends FormRequest
     public function rules()
     {
         return [
-            'logo' => 'nullable|image',
+            'logo' => 'nullable',
             'name' => 'nullable',
             'title' => 'nullable',
             'description' => 'nullable',

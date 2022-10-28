@@ -17,8 +17,8 @@ class Controller extends BaseController
     {
         $shop = Magasin::find(1);
 
-        $services_header = $this->getSection("services_header");
-        $services_content = $this->getSection("services_content");
+        $workshops_header = $this->getSection("workshops_header");
+        $workshops_content = $this->getSection("workshops_content");
 
         $solutions_header = $this->getSection("solutions_header");
         $solutions_content = $this->getSection("solutions_content");
@@ -32,8 +32,8 @@ class Controller extends BaseController
         return response()->json([
             "magasin" => $shop,
 
-            "services_header" => $services_header,
-            "services_content" => $services_content,
+            "workshops_header" => $workshops_header,
+            "workshops_content" => $workshops_content,
 
             "solutions_header" => $solutions_header,
             "solutions_content" => $solutions_content,

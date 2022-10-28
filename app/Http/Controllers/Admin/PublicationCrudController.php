@@ -42,7 +42,10 @@ class PublicationCrudController extends CrudController
         CRUD::column('section_id');
         //CRUD::column('icon');
         //CRUD::column('image');
-        CRUD::column('title');
+        CRUD::addColumn([
+            'name' => 'title',
+            'limit' => 250
+        ]);
         //CRUD::column('description');
 //        CRUD::column('content');
 
