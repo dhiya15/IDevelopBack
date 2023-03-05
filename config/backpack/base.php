@@ -321,7 +321,7 @@ return [
     | your token username here, if you're getting yellow alerts on your
     | admin panel's pages. Normally this is not needed, it is
     | preferred to add this as an environment variable
-    | (most likely in your .env.local file).
+    | (most likely in your .env.prod.local file).
     |
     | More info and payment form on:
     | https://www.backpackforlaravel.com

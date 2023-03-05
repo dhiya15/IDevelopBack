@@ -23,5 +23,8 @@ Route::group([
     Route::crud('section', 'SectionCrudController');
     Route::crud('publication', 'PublicationCrudController');
     Route::post('shop-update', [MagasinCrudController::class, 'updateShop'])->name('shop.update');
+    Route::get('accept-student/{id}', [RegistrationCrudController::class, 'acceptStudent']);
+    Route::get('refuse-student/{id}', [RegistrationCrudController::class, 'refuseStudent']);
     Route::crud('user', 'UserCrudController');
+    Route::crud('registration', 'RegistrationCrudController');
 }); // this should be the absolute last line of this file

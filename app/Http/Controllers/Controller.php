@@ -51,6 +51,7 @@ class Controller extends BaseController
             ->select(['publications.*', "sec.name as section_name"])
             ->join('sections AS sec', 'sec.id', '=', 'publications.section_id')
             ->where("sec.name", "=", $section_name)
+            ->orderBy('created_at', 'desc')
             ->get();
     }
 
