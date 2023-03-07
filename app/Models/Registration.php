@@ -19,12 +19,13 @@ class Registration extends Model
         "programing_level",
         "workshops",
         "is_accepted",
+        "qr_code",
     ];
 
     public function acceptStudent($crud = false)
     {
         return '<a class="btn btn-sm btn-link"
-                   href="' . url("/admin/accept-student") . '/'. $this->id . '"
+                   href="' . url("/admin/accept-student") . '/' . $this->id . '"
                    data-toggle="tooltip" title="Just a demo custom button.">
                    Accept Student
                 </a>';
@@ -33,13 +34,14 @@ class Registration extends Model
     public function refuseStudent($crud = false)
     {
         return '<a class="btn btn-sm btn-link"
-                   href="' . url("/admin/refuse-student") . '/' .$this->id.'"
+                   href="' . url("/admin/refuse-student") . '/' . $this->id . '"
                    data-toggle="tooltip" title="Just a demo custom button.">
                    Refuse Student
                 </a><br>';
     }
 
-    public function isAccepted() {
+    public function isAccepted()
+    {
         return ($this->is_accepted == 1) ? "Accepted" : "Refused";
     }
 }

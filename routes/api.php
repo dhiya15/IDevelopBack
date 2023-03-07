@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\RegistrationCrudController;
+use App\Http\Controllers\Api\AttendanceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,4 +30,7 @@ Route::middleware(['cors'])->group(function () {
     Route::post('/check-category', [RegistrationCrudController::class, 'checkCategory']);
 });
 
+
+
+Route::post('/verify', [AttendanceController::class , 'verify']);
 

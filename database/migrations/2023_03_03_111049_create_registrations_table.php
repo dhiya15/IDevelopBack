@@ -37,6 +37,9 @@ class CreateRegistrationsTable extends Migration
             )->nullable();
             $table->string("workshops")->nullable();
             $table->string("is_accepted")->nullable();
+
+            $table->string('qr_code')->nullable();
+
             $table->timestamps();
         });
     }
