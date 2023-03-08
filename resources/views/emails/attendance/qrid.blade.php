@@ -115,6 +115,19 @@
                                             <img
                                                 src="{!!$message->embedData(QrCode::format('png')->generate($registration->qr_code), 'QrCode.png', 'image/png')!!}">
                                         </p>
+
+                                        <p style="text-align: right">
+                                            المكان: مدرج المكتبة المركزية
+                                            الساعة: الثامنة صباحا (08:00)
+                                        </p>
+
+                                        <p style="text-align: right">
+                                            ملاحضة: يرحى إحضار الحاسوب مع الأنترنت بالاضافة Multiprise
+                                        </p>
+
+                                        <p style="text-align: right">
+                                            رقم النادي: 0673936944
+                                        </p>
                                         <p>Have fun with your JOURNEY ✨</p>
                                         <p>Kind regards,</p>
                                         <p><strong>ID TEAM</strong></p>
