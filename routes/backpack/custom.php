@@ -11,12 +11,12 @@ use Illuminate\Support\Facades\Route;
 // Routes you generate using Backpack\Generators will be placed here.
 
 Route::group([
-    'prefix'     => config('backpack.base.route_prefix', 'admin'),
+    'prefix' => config('backpack.base.route_prefix', 'admin'),
     'middleware' => array_merge(
-        (array) config('backpack.base.web_middleware', 'web'),
-        (array) config('backpack.base.middleware_key', 'admin')
+        (array)config('backpack.base.web_middleware', 'web'),
+        (array)config('backpack.base.middleware_key', 'admin')
     ),
-    'namespace'  => 'App\Http\Controllers\Admin',
+    'namespace' => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
     Route::crud('magasin', 'MagasinCrudController');
     Route::crud('contact', 'ContactCrudController');
@@ -27,4 +27,9 @@ Route::group([
     Route::get('refuse-student/{id}', [RegistrationCrudController::class, 'refuseStudent']);
     Route::crud('user', 'UserCrudController');
     Route::crud('registration', 'RegistrationCrudController');
+
+    // Route for sending confirmation emails in BULK
+    Route::post('/registration/send-email-confirmation', [RegistrationCrudController::class, 'sendConfirmationEmail'])
+        ->name('registration.send-email-confirmation');
+
 }); // this should be the absolute last line of this file

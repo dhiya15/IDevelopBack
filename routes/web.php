@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AttendanceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/confirmation/{id}', [AttendanceController::class, 'confirmeAttendance'])
+    ->name('attendance.confirme');
+
+Route::get('/resend-attendance-id/{id}', [AttendanceController::class, 'resendAttendanceId'])
+    ->name('attendance.resend-id');
+

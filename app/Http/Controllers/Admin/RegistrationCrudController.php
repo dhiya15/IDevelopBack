@@ -3,10 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\RegistrationRequest;
+use App\Mail\AttendanceConfirmationMail;
+use App\Mail\AttandanceMarkdownMail;
 use App\Models\Registration;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
 
 /**
  * Class RegistrationCrudController
@@ -16,6 +22,7 @@ use Illuminate\Http\Request;
 class RegistrationCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
+
     //use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     //use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
@@ -41,6 +48,9 @@ class RegistrationCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+
+        $this->crud->addButtonFromView('top', 'send-confirmation-email', 'attendance-confirmation-email');
+
         CRUD::column('full_name');
         CRUD::column('email');
         CRUD::column('phone_number');
@@ -49,9 +59,9 @@ class RegistrationCrudController extends CrudController
         CRUD::column('programing_level');
         CRUD::column('workshops');
         $this->crud->addColumn([
-            'name'  => 'is_accepted',
+            'name' => 'is_accepted',
             'label' => 'is Accepted', // Table column heading
-            'type'  => 'model_function',
+            'type' => 'model_function',
             'function_name' => 'isAccepted',
         ]);
 
@@ -73,9 +83,9 @@ class RegistrationCrudController extends CrudController
         CRUD::column('programing_level');
         CRUD::column('workshops');
         $this->crud->addColumn([
-            'name'  => 'is_accepted',
+            'name' => 'is_accepted',
             'label' => 'is Accepted', // Table column heading
-            'type'  => 'model_function',
+            'type' => 'model_function',
             'function_name' => 'isAccepted',
         ],);
 
@@ -100,17 +110,17 @@ class RegistrationCrudController extends CrudController
         CRUD::field('student_email');
         CRUD::field('student_phone_number');
         CRUD::addField([
-            'name'  => 'student_category',
+            'name' => 'student_category',
             'label' => 'Category',
-            'type'  => 'enum',
+            'type' => 'enum',
             'wrapper' => [
                 'class' => 'form-group col-md-6'
             ]
         ]);
         CRUD::addField([
-            'name'  => 'student_programing_level',
+            'name' => 'student_programing_level',
             'label' => 'Programing level',
-            'type'  => 'enum',
+            'type' => 'enum',
             'wrapper' => [
                 'class' => 'form-group col-md-6'
             ]
@@ -176,5 +186,17 @@ class RegistrationCrudController extends CrudController
             "success" => true,
             "number" => $registrationsCount
         ]);
+    }
+
+    public function sendConfirmationEmail(Request $request)
+    {
+        $registrations = Registration::query()->get();
+
+        foreach ($registrations as $r) {
+            $confirmation_link = URL::route('attendance.confirme', ['id' => $r->id]);
+            Mail::to($r->email)->send(new AttendanceConfirmationMail($r, $confirmation_link));
+        }
+        \Alert::add('success', "Emails has bee sent successfully")->flash();
+        return back();
     }
 }
