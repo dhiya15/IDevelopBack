@@ -199,4 +199,16 @@ class RegistrationCrudController extends CrudController
         \Alert::add('success', "Emails has bee sent successfully")->flash();
         return back();
     }
+
+    public function sendConfirmationEmailSingle($id)
+    {
+        $registrations = Registration::query()->find($id);
+
+        if ($registrations) {
+            $confirmation_link = URL::route('attendance.confirme', ['id' => $registrations->id]);
+            Mail::to($registrations->email)->send(new AttendanceConfirmationMail($registrations, $confirmation_link));
+        }
+        \Alert::add('success', "Emails has bee sent successfully")->flash();
+        return back();
+    }
 }

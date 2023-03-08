@@ -32,4 +32,8 @@ Route::group([
     Route::post('/registration/send-email-confirmation', [RegistrationCrudController::class, 'sendConfirmationEmail'])
         ->name('registration.send-email-confirmation');
 
+    Route::get('/registration/send-email-confirmation-single/{id}', [RegistrationCrudController::class, 'sendConfirmationEmailSingle'])
+        ->name('registration.send-email-confirmation-single');
+
+
 }); // this should be the absolute last line of this file
